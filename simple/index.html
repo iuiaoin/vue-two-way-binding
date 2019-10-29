@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./index.css">
+  <title>Demo</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text">
+    <h1></h1>
+  </div>
+</body>
+</html>
+
+<script>
+  let $ = document.querySelector.bind(document);
+  let data = {};
+  
+  // 数据 -> 视图
+  Object.defineProperty(data, 'content', {
+    set(newVal) {
+      update(newVal);
+    }
+  })
+
+  // 视图 -> 数据
+  $('input').addEventListener('input', (e) => {
+    data.content = e.currentTarget.value;
+  })
+  
+  function update(val) {
+    $('h1').textContent = val;
+  }
+</script>
